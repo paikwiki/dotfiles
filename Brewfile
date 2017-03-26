@@ -9,6 +9,7 @@
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
 tap 'caskroom/versions'
+tap 'Homebrew/bundle'
 tap 'homebrew/dupes'
 tap 'homebrew/php'
 tap 'homebrew/services'
