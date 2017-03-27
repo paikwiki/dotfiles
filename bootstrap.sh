@@ -96,7 +96,8 @@ npm install gitbook-cli --global --save
 # Install Rails & Jekyll
 #-------------------------------------------------------------------------------
 
-sudo gem install pry rails jekyll bundler
+# I can't install gems because of permission
+# gem install pry rails jekyll bundler
 
 #-------------------------------------------------------------------------------
 # Source profile
