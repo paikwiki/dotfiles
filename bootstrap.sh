@@ -96,7 +96,7 @@ npm install gitbook-cli --global --save
 # Install Rails & Jekyll
 #-------------------------------------------------------------------------------
 
-gem install pry rails jekyll bundler
+sudo gem install pry rails jekyll bundler
 
 #-------------------------------------------------------------------------------
 # Source profile
