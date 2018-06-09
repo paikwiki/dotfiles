@@ -36,6 +36,7 @@ fi
 eval "$(rbenv init -)"
 
 source ~/.bashrc
+export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
