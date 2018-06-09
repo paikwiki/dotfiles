@@ -7,8 +7,9 @@ set backspace=indent,eol,start
 
 set cindent
 set autoindent
-set tabstop=4
-set shiftwidth=4
+set ts=4
+set sw=2
+set sts=2
 set smartindent
 set history=15
 set ruler
