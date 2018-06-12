@@ -7,7 +7,7 @@ set backspace=indent,eol,start
 
 set cindent
 set autoindent
-set ts=4
+set ts=2
 set sw=2
 set sts=2
 set smartindent
