@@ -33,7 +33,6 @@ brew 'bash'
 
 brew 'awscli'
 brew 'git'
-# brew 'git-flow'
 brew 'mackup'
 brew 'node'
 brew 'openssl'
@@ -48,15 +47,9 @@ brew 'wget'
 # --with-httpd24 option. See  brew options php71  for more details.
 #-------------------------------------------------------------------------------
 
-brew 'php71' #, args: ['without-apache']
-brew 'php71-intl'
-brew 'php71-mecab'
-brew 'php71-redis'
-brew 'php71-xdebug'
-brew 'phpdocumentor'
+brew 'php72', args: ['without-apache']
 brew 'composer'
 brew 'phpunit'
-brew 'php-cs-fixer'
 
 #-------------------------------------------------------------------------------
 # Development-Ruby
@@ -77,7 +70,6 @@ brew 'pyenv-virtualenv'
 # Development-Database
 #-------------------------------------------------------------------------------
 
-# brew 'mariadb'
 brew 'mysql'
 brew 'sqlite'
 brew 'mongodb'
