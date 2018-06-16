@@ -13,10 +13,10 @@ alias tinker="php artisan tinker"
 alias jks="bundle exec jekyll serve --drafts --port 3000"
 
 # cd iCloud
-alias icloud="cd /Users/chPaik/Library/Mobile\ Documents/com~apple~CloudDocs/"
+alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
 
 # cd blog
-alias blog="cd /Users/chPaik/Library/Mobile\ Documents/com~apple~CloudDocs/paikwiki.github.io/"
+alias blog="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/paikwiki.github.io/"
 
 # cd ~/Documents/Writing/making-website-with-gh-pages/
 alias book="cd ~/Documents/Writing/making-website-with-gh-pages/"
