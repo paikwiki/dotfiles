@@ -102,4 +102,5 @@ cask 'tunnelbear'
 # Fonts
 #-------------------------------------------------------------------------------
 
-cask 'font-source-code-pro'
+cask 'font-space-mono'
+
