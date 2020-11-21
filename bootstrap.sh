@@ -34,6 +34,7 @@ brew cask cleanup
 
 # Install global Git configuration
 ln -nfs $DOTFILES/.gitconfig $HOME/.gitconfig
+ln -nfs $DOTFILES/.gitconfig_global $HOME/.gitconfig_global
 
 #-------------------------------------------------------------------------------
 # Vim
