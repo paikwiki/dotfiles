@@ -5,7 +5,7 @@
 #-------------------------------------------------------------------------------
 
 # Set temporary variable
-DOTFILES=$HOME/dotfiles
+DOTFILES=$HOME/dotfiles/srcs
 
 # Update dotfiles itself first
 [ -d "$DOTFILES/.git" ] && git --work-tree="$DOTFILES" --git-dir="$DOTFILES/.git" pull origin master
@@ -51,3 +51,6 @@ ln -nfs $DOTFILES/.bash_profile $HOME/.bash_profile
 
 # Install .bash_aliases
 ln -nfs $DOTFILES/.bash_aliases $HOME/.bash_aliases
+
+# Install .bashrc
+ln -nfs $DOTFILES/.bashrc $HOME/.bashrc
