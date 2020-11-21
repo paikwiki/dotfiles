@@ -73,6 +73,7 @@ cask 'iterm2'
 cask 'sequel-pro'
 cask 'slack'
 cask 'spectacle'
+cask 'visual-studio-code'
 
 #-------------------------------------------------------------------------------
 # Fonts
