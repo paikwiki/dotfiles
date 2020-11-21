@@ -1,38 +1,85 @@
+# Variables
+DEVPATH="~/codes"
+ICLOUDPATH="~/Library/Mobile\ Documents/com~apple~CloudDocs"
+
 # command
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+alias ls="ls -vGF"
 alias ll="ls -al"
+alias realias=". ~/.bash_aliases"
 
-# directory
-alias localhost="cd ~/Sites"
+# Directory
+alias dcode="cd $DEVPATH"
+alias dicloud="cd $ICLOUDPATH"
+alias d42cursus="cd $DEVPATH/42cursus"
+alias dblog="cd $ICLOUDPATH/paikwiki.github.io/"
+alias dbook="cd ~/Documents/Writing/making-website-with-gh-pages/"
 
-# laravel
+# Laravel
 alias art="php artisan"
 alias tinker="php artisan tinker"
 
-# Jekyll
+# Python
+alias py="python"
 
+# Jekyll
 alias jks="bundle exec jekyll serve --drafts --port 3000"
 
-# cd iCloud
-alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/"
+# Open folder with VS Code
+alias memo="code $ICLOUDPATH/00-memo"
+alias blog="code $ICLOUDPATH/paikwiki.github.io/"
+alias ftprintf="code $DEVPATH/42cursus/ft-printf"
+alias til="code $DEVPATH/42cursus/report.wiki"
+alias libft="code $DEVPATH/42cursus/libft"
+alias ftserver="code $DEVPATH/42cursus/ft-server"
+alias cub3d="code $DEVPATH/42cursus/cub3d"
+alias gnl="code $DEVPATH/42cursus/gnl"
 
-# cd blog
-alias blog="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/paikwiki.github.io/"
+# check ip address
+alias ipcheck="ifconfig | egrep '(^\\w|inet )'"
+alias myip=ipcheck
 
-# cd ~/Documents/Writing/making-website-with-gh-pages/
-alias book="cd ~/Documents/Writing/making-website-with-gh-pages/"
+# Git
+alias gs="git status"
+alias gl="git log --oneline"
+alias ga="git add"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gcam="git commit -am"
+alias gb="git branch"
+alias gd="git diff"
+alias gbd="git branch -d"
+alias gcln="git clone"
+alias gchk="git checkout"
+alias gchkb="git checkout -b"
+alias gpull="git pull"
+alias gpush="git push"
+alias gstash="git stash"
+alias gconfig="git config"
 
-# cp -rf ~/Documents/Writing/making-website-with-gh-pages/_book/* ~/Site/tmp/
-alias bookpub="rm -rf ~/Sites/book/*; cp -rf ~/Documents/Writing/making-website-with-gh-pages/_book/* ~/Sites/book/;mac ip:local"
+# Docker
+alias dk="docker"
+alias dkp="docker ps"
+alias dki="docker image"
+alias dkis="docker images"
 
-# create ebook
-alias epub="gitbook epub ~/Documents/Writing/making-website-with-gh-pages/ ~/Documents/Writing/book-$(date '+%Y%m%d%H%M').epub"
-alias pdf="gitbook pdf ~/Documents/Writing/making-website-with-gh-pages/ ~/Documents/Writing/book-$(date '+%Y%m%d%H%M').pdf"
+# Kubernetes
+alias kc="kubectl"
+alias mk="minikube"
 
-# make directory with date and time
+# 42
+alias gcw="gcc -Wall -Wextra -Wall"
+alias norminette="~/.norminette/norminette.rb"
+alias norm="norminette"
+
+# Commands
 alias mkdate="mkdir $(date '+%Y%m%d-%H%M%S')"
-
-# add LICENSE file
 alias addlicense="license $1 > LICENSE"
+alias cpwd="pwd|pbcopy"
+alias trash="rmtrash"
+alias sc="open -a ScreenSaverEngine"
 
 # mkdir and cd
 mkcdir () {
@@ -40,3 +87,15 @@ mkcdir () {
 	cd -P -- "$1"
 }
 alias mcd=mkcdir
+
+# browser-sync with target directory
+bsync () {
+	browser-sync start --server --startPath="$1"
+}
+alias bsync=bsync
+
+# volume control
+vol() {
+	osascript -e "set volume $1"
+}
+alias vol=vol
