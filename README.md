@@ -1,4 +1,9 @@
-dotfiles for OSX
+# dotfiles by paikwiki
+
+## Installation
+
+- [manual-install-apps.md](./manual-install-applications.md)
+## Thanks to
 
 I got inspiration from Appkr's dotfiles.
 
