@@ -1,6 +1,6 @@
 # Variables
-DEVPATH="~/codes"
-ICLOUDPATH="~/Library/Mobile\ Documents/com~apple~CloudDocs"
+DEVPATH="$HOME/codes"
+ICLOUDPATH="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs"
 
 # command
 alias rm="rm -i"
@@ -8,14 +8,14 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias ls="ls -vGF"
 alias ll="ls -al"
-alias realias=". ~/.bash_aliases"
+alias realias=". $HOME/.bash_aliases"
 
 # Directory
 alias dcode="cd $DEVPATH"
 alias dicloud="cd $ICLOUDPATH"
 alias d42cursus="cd $DEVPATH/42cursus"
 alias dblog="cd $ICLOUDPATH/paikwiki.github.io/"
-alias dbook="cd ~/Documents/Writing/making-website-with-gh-pages/"
+alias dbook="cd $HOME/Documents/Writing/making-website-with-gh-pages/"
 
 # Laravel
 alias art="php artisan"
@@ -71,7 +71,7 @@ alias mk="minikube"
 
 # 42
 alias gcw="gcc -Wall -Wextra -Wall"
-alias norminette="~/.norminette/norminette.rb"
+alias norminette="$HOME/.norminette/norminette.rb"
 alias norm="norminette"
 
 # Commands
@@ -99,3 +99,36 @@ vol() {
 	osascript -e "set volume $1"
 }
 alias vol=vol
+
+# Good
+alias good='echo "
+      👍
+"'
+
+# 42 - Diagram for FT_SERVICES
+export FTSERVICES="
+                         FT_SERVICES - Kubernetes cluster
+
+                                     ╭───────╮
+                                     │ World │
+                                     ╰───┬───╯
+                                         │
+                           ╭─────────────┷──────────╮
+                           │ Load Balancer(MetalLB) │
+                           ╰─────────────┬──────────╯
+     ┌────────────┬────────────────────┬─┴────────────────────┬───────────┐
+     │3000        │5050                │80/443/22             │5000       │21
+╭────┷────╮ ╭─────┷─────╮ Redirect ╭───┷───╮ Reverse... ╭─────┷──────╮ ╭──┷───╮
+│ Grafana │ │ WordPress ┠──────────┤ NginX ├────────────┨ PhpMyAdmin │ │ FTPS │
+╰─┯─────┬─╯ ╰───┬────┯──╯          ╰───┬───╯            ╰─────┬─┯────╯ ╰──┬───╯
+  │     │       │    └┐                │                      │ └┐   ┌────┘
+  │data └─────┐ │     └────────────────┼──────────────────────┼──┴───┼──────┐
+  │           │ │                      │                      │      │ data │
+  │           │ │                      │                      │     ┌┘      │
+┌─┴────────┐  │ │                      │                      │     │ ┌─────┷─┐
+│ InfluxDB ┠──┴─┴──────────────────────┴──────────────────────┴─────┴─┤ MySQL │
+└──────────┘ Metrics                                                  └───────┘
+
+"
+
+alias ftservices='echo "$FTSERVICES"'

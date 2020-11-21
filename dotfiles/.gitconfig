@@ -1,15 +1,12 @@
+# This is Git's per-user configuration file.
 [core]
-	excludesfile = /Users/chPaik/.gitignore_global
+	excludesFile = ~/.gitignore_global
 [user]
-	name = paikwiki
-	email = paikwiki@gmail.com
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+name = paikwiki
+email = paikwiki@gmail.com
+[core]
+	editor = vim
+[init]
+	defaultBranch = main
 [color]
 	ui = true
-[commit]
-	template = /Users/chPaik/.stCommitMsg

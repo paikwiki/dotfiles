@@ -1,57 +1,44 @@
-if [ -f ~/.bash_token ]; then
-	. ~/.bash_token
-fi
+export LANG=en_US.UTF-8
+export EDITOR='vim'
 
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
-alias ls='ls -vGF'
-
-# [chPaik@Changhyunui-MacBook-Pro ~]$
+# [chpaik@Changhyunui-MacBook-Pro ~]$
 # PS1="[\u@\h \W]\\$ "
 # [~]$
 PS1="\e[38;5;20m \e[0m[\W]"
 
+# PATH
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/opt/local/bin:$PATH"
+export PATH="/opt/local/sbin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/usr/local/opt/php@7.3/bin:$PATH"
+export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
+export PATH="/usr/local/lib/node_modules:$PATH"
+export PATH="/usr/local/flutter/bin:$PATH"
+export PATH="/usr/local/mysql/bin:$PATH"
+export PATH="/usr/local/opt/qt/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
 # Set colors to match iTerm2 Terminal Colors
 export TERM=xterm-256color
 
-export PATH="/usr/local/mysql/bin:$PATH"
-# export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:$PATH
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
-export PATH="$PATH:~/.composer/vendor/bin"
-
-# MacPorts Installer addition on 2014-05-16_at_20:19:19: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
+eval "$(rbenv init -)"
 
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
 
-# docker
-## eval "$(docker-machine env default)"
-
-# rvenv 
-eval "$(rbenv init -)"
-
-source ~/.bashrc
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f /Users/chPaik/google-cloud-sdk/path.bash.inc ]; then
-  source '/Users/chPaik/google-cloud-sdk/path.bash.inc'
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
 fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f /Users/chPaik/google-cloud-sdk/completion.bash.inc ]; then
-  source '/Users/chPaik/google-cloud-sdk/completion.bash.inc'
-fi
-export PATH="/usr/local/lib/node_modules:$PATH"
-export PATH="/usr/local/opt/qt/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-export PATH="/usr/local/opt/node@8/bin:$PATH"
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
