@@ -2,20 +2,13 @@
 
 ## List of dotfile
 
-- .atom
-- .composer
-- .config
-- .filezilla
-- .homestead
-- .inputrc
-- .jshints
 - .vimrc
 - .gitconfig
 - .gitignore
 - .gitignore_global
-- .gitmessage
 - .bash_aliases
 - .bash_profile
+- .bashrc
 
 ## Installation
 
