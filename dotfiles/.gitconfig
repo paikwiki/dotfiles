@@ -2,8 +2,8 @@
 [core]
 	excludesFile = ~/.gitignore_global
 [user]
-name = paikwiki
-email = paikwiki@gmail.com
+	name = paikwiki
+	email = paikwiki@gmail.com
 [core]
 	editor = vim
 [init]
