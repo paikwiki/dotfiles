@@ -34,9 +34,6 @@ brew cask cleanup
 
 # Install global Git configuration
 ln -nfs $DOTFILES/.gitconfig $HOME/.gitconfig
-git config --global core.excludesfile $DOTFILES/.gitignore_global
-git config --global user.name "paikwiki"
-git config --global user.email "paikwiki@gmail.com"
 
 #-------------------------------------------------------------------------------
 # Vim
@@ -54,41 +51,3 @@ ln -nfs $DOTFILES/.bash_profile $HOME/.bash_profile
 
 # Install .bash_aliases
 ln -nfs $DOTFILES/.bash_aliases $HOME/.bash_aliases
-
-#-------------------------------------------------------------------------------
-# PHP
-#-------------------------------------------------------------------------------
-
-# Install Composer
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
-
-# Install global Composer packages
-/usr/local/bin/composer global require laravel/installer laravel/envoy
-
-#-------------------------------------------------------------------------------
-# Node
-#-------------------------------------------------------------------------------
-
-# Install global Node packages
-npm install gulp-cli gulp yo http-server nodemon --global --save
-
-#-------------------------------------------------------------------------------
-# Install Rails & Jekyll
-#-------------------------------------------------------------------------------
-
-# I can't install gems because of permission
-# gem install pry rails jekyll bundler
-
-#-------------------------------------------------------------------------------
-# Source profile
-#-------------------------------------------------------------------------------
-
-# source $HOME/.zshrc
-
-#-------------------------------------------------------------------------------
-# Set OS X preferences
-# We will run this last because this will reload the shell
-#-------------------------------------------------------------------------------
-
-# source $DOTFILES/.osx
