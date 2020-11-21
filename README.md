@@ -4,7 +4,6 @@
 
 - .vimrc
 - .gitconfig
-- .gitignore
 - .gitignore_global
 - .bash_aliases
 - .bash_profile
