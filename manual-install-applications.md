@@ -8,6 +8,8 @@
 
 ## Apps from AppStore
 
+- Amphetamine
+- Xcode
 - Mini Carendar
 - Pages
 - Numbers

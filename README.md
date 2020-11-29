@@ -2,12 +2,10 @@
 
 ## List of dotfile
 
-- .vimrc
 - .gitconfig
 - .gitignore_global
-- .bash_aliases
-- .bash_profile
-- .bashrc
+- .vimrc
+- .zshrc
 
 ## Installation
 
