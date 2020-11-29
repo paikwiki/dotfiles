@@ -2,14 +2,10 @@
 # Taps
 #-------------------------------------------------------------------------------
 
-tap 'caskroom/cask'
-tap 'caskroom/fonts'
-tap 'caskroom/versions'
-tap 'Homebrew/bundle'
-tap 'homebrew/dupes'
-tap 'homebrew/php'
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
 tap 'homebrew/services'
-tap 'homebrew/versions'
 
 #-------------------------------------------------------------------------------
 # Make sure apps get installed in system Applications dir
@@ -22,7 +18,6 @@ cask_args appdir: '/Applications'
 #-------------------------------------------------------------------------------
 
 brew 'git'
-brew 'node'
 brew 'openssl'
 brew 'pandoc'
 brew 'wget'
@@ -31,9 +26,16 @@ brew 'wget'
 # PHP
 #-------------------------------------------------------------------------------
 
-brew 'php73', args: ['without-apache']
+brew 'php@7.3'
 brew 'composer'
 brew 'phpunit'
+
+#-------------------------------------------------------------------------------
+# Node
+#-------------------------------------------------------------------------------
+
+brew 'node'
+brew 'nvm'
 
 #-------------------------------------------------------------------------------
 # Ruby
@@ -46,34 +48,37 @@ brew 'rbenv'
 # Python (includes pip, easy_install)
 #-------------------------------------------------------------------------------
 
-brew 'python', args:['with-sphinx-doc']
-brew 'python3', args:['with-sphinx-doc']
+brew 'python'
+brew 'python3'
 brew 'pyenv-virtualenv'
 
 #-------------------------------------------------------------------------------
-# Database
+# Kubernetes
 #-------------------------------------------------------------------------------
 
-brew 'mysql'
-brew 'sqlite'
-brew 'mongodb'
+brew 'kubectl'
+brew 'minikube'
 
 #-------------------------------------------------------------------------------
 # Apps
 #-------------------------------------------------------------------------------
 
 cask 'bestres'
-cask 'calibre'
+cask 'clipy'
+cask 'discord'
 cask 'docker'
-cask 'dropbox'
-cask 'filezilla'
-cask 'firefox'
 cask 'google-chrome'
 cask 'iterm2'
+cask 'rectangle'
 cask 'sequel-pro'
 cask 'slack'
-cask 'spectacle'
 cask 'visual-studio-code'
+
+#-------------------------------------------------------------------------------
+# Mac AppStore CommandLine Interface(mas-cli)
+#-------------------------------------------------------------------------------
+
+brew 'mas'
 
 #-------------------------------------------------------------------------------
 # Fonts
