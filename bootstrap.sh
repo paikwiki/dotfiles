@@ -29,6 +29,12 @@ brew cleanup
 brew cask cleanup
 
 #-------------------------------------------------------------------------------
+# Make ZSH the default shell environment
+#-------------------------------------------------------------------------------
+
+chsh -s $(which zsh)
+
+#-------------------------------------------------------------------------------
 # Git
 #-------------------------------------------------------------------------------
 
@@ -40,18 +46,25 @@ ln -nfs $DOTFILES/.gitconfig_global $HOME/.gitconfig_global
 # Vim
 #-------------------------------------------------------------------------------
 
+# Create .vim directory
+mkdir ~/.vim
+mkdir ~/.vim/backup
+mkdir ~/.vim/undo
+
 # Install .vimrc
 ln -nfs $DOTFILES/.vimrc $HOME/.vimrc
 
+
 #-------------------------------------------------------------------------------
-# Bash
+# NVM
 #-------------------------------------------------------------------------------
 
-# Install .bash_profile
-ln -nfs $DOTFILES/.bash_profile $HOME/.bash_profile
+# Create .nvm directory
+mkdir ~/.nvm
 
-# Install .bash_aliases
-ln -nfs $DOTFILES/.bash_aliases $HOME/.bash_aliases
+#-------------------------------------------------------------------------------
+# Install Apps from AppStore with mas-cli
+#-------------------------------------------------------------------------------
 
-# Install .bashrc
-ln -nfs $DOTFILES/.bashrc $HOME/.bashrc
+mas install 937984704 # Amphetamine (5.1)
+mas install 497799835 # Xcode (12.2)
