@@ -1,3 +1,50 @@
+# -----------------------------------------------
+# Runtime Configuration
+# -----------------------------------------------
+
+export LANG=en_US.UTF-8
+export EDITOR='vim'
+
+export PROMPT="%F{250}[%f%F{33}%~%f%F{250}]%f"
+
+# PATH
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/opt/local/bin:$PATH"
+export PATH="/opt/local/sbin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+# Git-radar
+export PATH="$PATH:$HOME/.git-radar"
+NEWLINE=$'\n'
+export PROMPT="$PROMPT\$(git-radar --zsh --fetch)${NEWLINE}%F{78}%n%f$ "
+setopt PROMPT_SUBST
+
+# Set colors to match iTerm2 Terminal Colors
+export TERM=xterm-256color
+
+# -----------------------------------------------
+# Node
+# -----------------------------------------------
+
+export NVM_DIR="$HOME/.nvm"
+	[ -s "/usr/local/opt/nvm/nvm.sh" ] && \
+			. "/usr/local/opt/nvm/nvm.sh" # This loads nvm
+	[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \
+			. "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
+# -----------------------------------------------
+# Aliases
+# -----------------------------------------------
+
+export USER_42="cbaek"
+export MAIL_42="cbaek@student.42seoul.kr"
+
+# -----------------------------------------------
+# Aliases
+# -----------------------------------------------
+
 # Variables
 DEVPATH="$HOME/codes"
 ICLOUDPATH="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs"
@@ -16,6 +63,7 @@ alias dicloud="cd $ICLOUDPATH"
 alias d42cursus="cd $DEVPATH/42cursus"
 alias dblog="cd $ICLOUDPATH/paikwiki.github.io/"
 alias dbook="cd $HOME/Documents/Writing/making-website-with-gh-pages/"
+alias here="open $(pwd)"
 
 # Laravel
 alias art="php artisan"
