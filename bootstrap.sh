@@ -40,7 +40,7 @@ chsh -s $(which zsh)
 
 # Install global Git configuration
 ln -nfs $DOTFILES/.gitconfig $HOME/.gitconfig
-ln -nfs $DOTFILES/.gitconfig_global $HOME/.gitconfig_global
+ln -nfs $DOTFILES/.gitignore_global $HOME/.gitignore_global
 
 #-------------------------------------------------------------------------------
 # Vim
