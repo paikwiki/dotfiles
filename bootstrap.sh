@@ -49,6 +49,7 @@ ln -nfs $DOTFILES/.gitignore_global $HOME/.gitignore_global
 # Create .vim directory
 mkdir ~/.vim
 mkdir ~/.vim/backup
+mkdir ~/.vim/swap
 mkdir ~/.vim/undo
 
 # Install .vimrc
