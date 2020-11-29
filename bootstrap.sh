@@ -5,7 +5,7 @@
 #-------------------------------------------------------------------------------
 
 # Set temporary variable
-DOTFILES=$HOME/dotfiles/srcs
+DOTFILES="$HOME/dotfiles"
 
 # Update dotfiles itself first
 [ -d "$DOTFILES/.git" ] && git --work-tree="$DOTFILES" --git-dir="$DOTFILES/.git" pull origin master
