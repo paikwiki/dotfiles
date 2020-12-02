@@ -5,7 +5,7 @@
 export LANG=en_US.UTF-8
 export EDITOR='vim'
 
-export PROMPT="%F{250}[%f%F{33}%~%f%F{250}]%f"
+export PROMPT="%F{33}%f %F{250}[%f%F{33}%~%f%F{250}]%f"
 
 # PATH
 export PATH="/usr/local/bin:$PATH"
