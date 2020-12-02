@@ -70,3 +70,4 @@ mkdir ~/.nvm
 mas install 937984704 # Amphetamine (5.1)
 mas install 497799835 # Xcode (12.2)
 mas install 929507092 # Photoscape X (4.1.1)
+mas install 416746898 # HWP 2014 VP Viewer (10.30.6)
