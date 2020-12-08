@@ -71,6 +71,13 @@ rbenv install 2.7.2
 rbenv global 2.7.2
 
 #-------------------------------------------------------------------------------
+# Safari - change default font-family: using sans-serif by default
+#-------------------------------------------------------------------------------
+
+defaults write com.apple.safari UserStyleSheetEnabled 1
+defaults write com.apple.safari UserStyleSheetLocationURLString "~/dotfiles/srcs/style-safari.css"
+
+#-------------------------------------------------------------------------------
 # Install Apps from AppStore with mas-cli
 #-------------------------------------------------------------------------------
 
