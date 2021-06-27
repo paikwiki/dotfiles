@@ -14,6 +14,7 @@ export PATH="/opt/local/bin:$PATH"
 export PATH="/opt/local/sbin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 
 # Git-radar
 export PATH="$PATH:$HOME/.git-radar"
@@ -40,6 +41,12 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# -----------------------------------------------
+# Python
+# -----------------------------------------------
+
+alias python="python3"
 
 # -----------------------------------------------
 # Aliases
@@ -77,7 +84,7 @@ alias art="php artisan"
 alias tinker="php artisan tinker"
 
 # Python
-alias py="python"
+alias py="python3"
 
 # Jekyll
 alias jks="bundle exec jekyll serve --drafts --port 3000"
@@ -128,6 +135,7 @@ alias mk="minikube"
 alias gcw="gcc -Wall -Wextra -Wall"
 alias norminette="$HOME/.norminette/norminette.rb"
 alias norm="norminette"
+alias clangw="clang++ -Wall -Wextra -Werror -std=c++98"
 
 # Commands
 alias mkdate="mkdir $(date '+%Y%m%d-%H%M%S')"
@@ -155,35 +163,14 @@ vol() {
 }
 alias vol=vol
 
+# leak check
+#  usage: $loopleak APP
+loopleakcheck () {
+	while true; do leaks $1; sleep 1.6; clear; done
+}
+alias loopleak=loopleakcheck
+
 # Good
 alias good='echo "
       👍
 "'
-
-# 42 - Diagram for FT_SERVICES
-export FTSERVICES="
-                         FT_SERVICES - Kubernetes cluster
-
-                                     ╭───────╮
-                                     │ World │
-                                     ╰───┬───╯
-                                         │
-                           ╭─────────────┷──────────╮
-                           │ Load Balancer(MetalLB) │
-                           ╰─────────────┬──────────╯
-     ┌────────────┬────────────────────┬─┴────────────────────┬───────────┐
-     │3000        │5050                │80/443/22             │5000       │21
-╭────┷────╮ ╭─────┷─────╮ Redirect ╭───┷───╮ Reverse... ╭─────┷──────╮ ╭──┷───╮
-│ Grafana │ │ WordPress ┠──────────┤ NginX ├────────────┨ PhpMyAdmin │ │ FTPS │
-╰─┯─────┬─╯ ╰───┬────┯──╯          ╰───┬───╯            ╰─────┬─┯────╯ ╰──┬───╯
-  │     │       │    └┐                │                      │ └┐   ┌────┘
-  │data └─────┐ │     └────────────────┼──────────────────────┼──┴───┼──────┐
-  │           │ │                      │                      │      │ data │
-  │           │ │                      │                      │     ┌┘      │
-┌─┴────────┐  │ │                      │                      │     │ ┌─────┷─┐
-│ InfluxDB ┠──┴─┴──────────────────────┴──────────────────────┴─────┴─┤ MySQL │
-└──────────┘ Metrics                                                  └───────┘
-
-"
-
-alias ftservices='echo "$FTSERVICES"'
