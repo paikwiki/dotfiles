@@ -5,35 +5,54 @@
 export LANG=en_US.UTF-8
 export EDITOR='vim'
 
-export PROMPT="%F{33}%f %F{250}[%f%F{33}%~%f%F{250}]%f"
-
 # PATH
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/opt/local/bin:$PATH"
 export PATH="/opt/local/sbin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
 
-# Git-radar
-export PATH="$PATH:$HOME/.git-radar"
+# -----------------------------------------------
+# Prompt(Git-radar)
+# -----------------------------------------------
 NEWLINE=$'\n'
+export PATH="$HOME/.git-radar:$PATH"
+export PROMPT="%F{33}%f%F{250}[%f%F{33}%~%f%F{250}]%f"
 export PROMPT="$PROMPT\$(git-radar --zsh --fetch)${NEWLINE}%F{78}%n%f$ "
 setopt PROMPT_SUBST
 
-# Set colors to match iTerm2 Terminal Colors
 export TERM=xterm-256color
+export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
 
 # -----------------------------------------------
-# Node
+# Homebrew
 # -----------------------------------------------
 
-export NVM_DIR="$HOME/.nvm"
-	[ -s "/usr/local/opt/nvm/nvm.sh" ] && \
-			. "/usr/local/opt/nvm/nvm.sh" # This loads nvm
-	[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \
-			. "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# -----------------------------------------------
+# Python
+# -----------------------------------------------
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Conda
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$($HOME/opt/anaconda3/bin/conda 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
 # -----------------------------------------------
 # Ruby
@@ -43,21 +62,39 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # -----------------------------------------------
+# Rust
+# -----------------------------------------------
+
+. "$HOME/.cargo/env"
+
+# -----------------------------------------------
+# Node
+# -----------------------------------------------
+
+export NVM_DIR="$HOME/.nvm"
+. "/opt/homebrew/opt/nvm/nvm.sh" # This loads nvm
+. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
+# -----------------------------------------------
+# Google Cloud SDK
+# -----------------------------------------------
+
+# updates PATH for the Google Cloud SDK
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
+    . "$HOME/google-cloud-sdk/path.zsh.inc";
+fi
+# enables shell command completion for gcloud
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
+    . "$HOME/google-cloud-sdk/completion.zsh.inc";
+fi
+
+# -----------------------------------------------
+# Aliases
+# -----------------------------------------------
+
 # Python
-# -----------------------------------------------
-
 alias python="python3"
-
-# -----------------------------------------------
-# Aliases
-# -----------------------------------------------
-
-export USER_42="cbaek"
-export MAIL_42="cbaek@student.42seoul.kr"
-
-# -----------------------------------------------
-# Aliases
-# -----------------------------------------------
+alias py="python3"
 
 # Variables
 DEVPATH="$HOME/codes"
@@ -74,30 +111,12 @@ alias realias=". $HOME/.bash_aliases"
 # Directory
 alias dcode="cd $DEVPATH"
 alias dicloud="cd $ICLOUDPATH"
-alias d42cursus="cd $DEVPATH/42cursus"
 alias dblog="cd $ICLOUDPATH/paikwiki.github.io/"
-alias dbook="cd $HOME/Documents/Writing/making-website-with-gh-pages/"
 alias here="open $(pwd)"
-
-# Laravel
-alias art="php artisan"
-alias tinker="php artisan tinker"
-
-# Python
-alias py="python3"
-
-# Jekyll
-alias jks="bundle exec jekyll serve --drafts --port 3000"
 
 # Open folder with VS Code
 alias memo="code $ICLOUDPATH/00-memo"
 alias blog="code $ICLOUDPATH/paikwiki.github.io/"
-alias ftprintf="code $DEVPATH/42cursus/ft-printf"
-alias til="code $DEVPATH/42cursus/42report"
-alias libft="code $DEVPATH/42cursus/libft"
-alias ftserver="code $DEVPATH/42cursus/ft-server"
-alias cub3d="code $DEVPATH/42cursus/cub3d"
-alias gnl="code $DEVPATH/42cursus/gnl"
 
 # check ip address
 alias ipcheck="ifconfig | egrep '(^\\w|inet )'"
@@ -108,8 +127,6 @@ alias gs="git status"
 alias gl="git log --oneline"
 alias ga="git add"
 alias gc="git commit"
-alias gcm="git commit -m"
-alias gcam="git commit -am"
 alias gb="git branch"
 alias gd="git diff"
 alias gbd="git branch -d"
@@ -121,21 +138,14 @@ alias gpush="git push"
 alias gstash="git stash"
 alias gconfig="git config"
 
+# Gitmoji
+alias gmj="gitmoji -c"
+
 # Docker
 alias dk="docker"
 alias dkp="docker ps"
 alias dki="docker image"
 alias dkis="docker images"
-
-# Kubernetes
-alias kc="kubectl"
-alias mk="minikube"
-
-# 42
-alias gcw="gcc -Wall -Wextra -Wall"
-alias norminette="$HOME/.norminette/norminette.rb"
-alias norm="norminette"
-alias clangw="clang++ -Wall -Wextra -Werror -std=c++98"
 
 # Commands
 alias mkdate="mkdir $(date '+%Y%m%d-%H%M%S')"
@@ -151,6 +161,9 @@ mkcdir () {
 }
 alias mcd=mkcdir
 
+# brightness control
+alias br="$HOME/Applications/brightness $1"
+
 # browser-sync with target directory
 bsync () {
 	browser-sync start --server --startPath="$1"
@@ -158,19 +171,22 @@ bsync () {
 alias bsync=bsync
 
 # volume control
-vol() {
+volumecontrol() {
 	osascript -e "set volume $1"
 }
-alias vol=vol
+alias vol=volumecontrol
 
 # leak check
-#  usage: $loopleak APP
 loopleakcheck () {
 	while true; do leaks $1; sleep 1.6; clear; done
 }
+#  usage: $loopleak APP
 alias loopleak=loopleakcheck
 
 # Good
 alias good='echo "
       👍
 "'
+
+# Beep
+alias beep='printf "\a"'
