@@ -18,7 +18,6 @@ cask_args appdir: '/Applications'
 #-------------------------------------------------------------------------------
 
 brew 'git'
-brew 'git-radar'
 brew 'openssl'
 brew 'wget'
 

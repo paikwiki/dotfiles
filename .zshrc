@@ -2,9 +2,6 @@
 # Runtime Configuration
 # -----------------------------------------------
 
-export LANG=en_US.UTF-8
-export EDITOR='vim'
-
 # PATH
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
@@ -14,16 +11,10 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
 
-# -----------------------------------------------
-# Prompt(Git-radar)
-# -----------------------------------------------
-NEWLINE=$'\n'
-export PATH="$HOME/.git-radar:$PATH"
-export PROMPT="%F{33}%f%F{250}[%f%F{33}%~%f%F{250}]%f"
-export PROMPT="$PROMPT\$(git-radar --zsh --fetch)${NEWLINE}%F{78}%n%f$ "
-setopt PROMPT_SUBST
-
+export LANG=en_US.UTF-8
+export EDITOR='vim'
 export TERM=xterm-256color
+
 export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
 
