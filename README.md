@@ -7,6 +7,11 @@
 - .vimrc
 - .zshrc
 
+## Manual installation
+
+- [google-cloud-cli](https://cloud.google.com/sdk/docs/install?hl=ko)
+- [browser-sync](https://browsersync.io/)(Node package)
+
 ## Thanks to
 
 I got inspiration from [Appkr's dotfiles](https://github.com/appkr/dotfiles).
