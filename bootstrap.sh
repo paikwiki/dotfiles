@@ -11,6 +11,11 @@ DOTFILES="$HOME/dotfiles"
 # Homebrew
 #-------------------------------------------------------------------------------
 
+# Install if Homebrew is not exist
+if test ! $(which brew); then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
 # Update Homebrew recipes
 brew update
 
