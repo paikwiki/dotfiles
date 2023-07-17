@@ -1,17 +1,24 @@
 #!/bin/sh
 
 #-------------------------------------------------------------------------------
+# Zshrc
+#-------------------------------------------------------------------------------
+
+# Install .zshrc
+ln -nfs $DOTFILES/.zshrc $HOME/.zshrc
+
+#-------------------------------------------------------------------------------
 # Dotfiles
 #-------------------------------------------------------------------------------
 
 # Set temporary variable
 DOTFILES="$HOME/dotfiles"
-
 #-------------------------------------------------------------------------------
 # Homebrew
 #-------------------------------------------------------------------------------
 
 # Install if Homebrew is not exist
+PATH="/opt/homebrew/bin:$PATH"
 if [ ! -f "$(which brew)" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
