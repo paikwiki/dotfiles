@@ -8,15 +8,24 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/opt/local/bin:$PATH"
 export PATH="/opt/local/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
-export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
 
 export LANG=en_US.UTF-8
 export EDITOR='vim'
 export TERM=xterm-256color
 
-export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3.1/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3.1/include"
+
+
+# -----------------------------------------------
+# Prompt
+# -----------------------------------------------
+
+NEWLINE=$'\n'
+export PATH="$HOME/.git-radar:$PATH"
+export PROMPT="%F{33}🚌 %f%F{250}[%f%F{33}%~%f%F{250}]%f"
+export PROMPT="$PROMPT\$(/opt/homebrew/bin/githud zsh)${NEWLINE}%F{78}%n%f$ "
+setopt PROMPT_SUBST
 
 # -----------------------------------------------
 # Homebrew
@@ -29,7 +38,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # -----------------------------------------------
 
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 # -----------------------------------------------
 # Ruby
@@ -37,12 +45,6 @@ eval "$(pyenv virtualenv-init -)"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-
-# -----------------------------------------------
-# Rust
-# -----------------------------------------------
-
-. "$HOME/.cargo/env"
 
 # -----------------------------------------------
 # Node
@@ -53,7 +55,7 @@ export NVM_DIR="$HOME/.nvm"
 . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # -----------------------------------------------
-# Google Cloud SDK
+# Google Cloud SDK(install manually)
 # -----------------------------------------------
 
 # updates PATH for the Google Cloud SDK
@@ -83,7 +85,6 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias ls="ls -vGF"
 alias ll="ls -al"
-alias realias=". $HOME/.bash_aliases"
 
 # Directory
 alias dcode="cd $DEVPATH"

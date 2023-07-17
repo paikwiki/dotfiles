@@ -6,6 +6,7 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/services'
+tap 'gbataille/homebrew-gba'
 
 #-------------------------------------------------------------------------------
 # Make sure apps get installed in system Applications dir
@@ -40,6 +41,7 @@ brew 'rbenv'
 # Apps
 #-------------------------------------------------------------------------------
 
+brew 'githud'
 cask 'bestres'
 cask 'clipy'
 cask 'docker'
