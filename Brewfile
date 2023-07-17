@@ -33,7 +33,7 @@ brew 'nvm'
 # Virtual Environment
 #-------------------------------------------------------------------------------
 
-brew 'python3'
+brew 'python'
 brew 'pyenv'
 brew 'rbenv'
 
