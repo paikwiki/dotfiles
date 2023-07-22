@@ -129,7 +129,6 @@ alias dkis="docker images"
 alias mkdate="mkdir $(date '+%Y%m%d-%H%M%S')"
 alias addlicense="license $1 > LICENSE"
 alias cpwd="pwd|pbcopy"
-alias trash="rmtrash"
 alias sc="open -a ScreenSaverEngine"
 
 # mkdir and cd

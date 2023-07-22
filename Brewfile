@@ -21,6 +21,7 @@ cask_args appdir: '/Applications'
 brew 'git'
 brew 'openssl'
 brew 'wget'
+brew 'trash'
 
 #-------------------------------------------------------------------------------
 # Node
