@@ -4,24 +4,16 @@
 
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
-tap 'homebrew/cask-versions'
 tap 'homebrew/services'
 tap 'gbataille/homebrew-gba'
-
-#-------------------------------------------------------------------------------
-# Make sure apps get installed in system Applications dir
-#-------------------------------------------------------------------------------
-
-cask_args appdir: '/Applications'
 
 #-------------------------------------------------------------------------------
 # Install Binaries
 #-------------------------------------------------------------------------------
 
 brew 'git'
-brew 'openssl'
+brew 'openssl@3.1'
 brew 'wget'
-brew 'trash'
 
 #-------------------------------------------------------------------------------
 # Node
@@ -42,14 +34,20 @@ brew 'rbenv'
 # Apps
 #-------------------------------------------------------------------------------
 
-brew 'githud'
-cask 'bestres'
+brew 'k9s'
+brew 'autoenv'
+brew 'git-radar'
+brew 'gitmoji'
+brew 'brightness'
+brew 'trash'
+cask 'chatgpt'
 cask 'clipy'
 cask 'docker'
 cask 'google-chrome'
 cask 'iterm2'
 cask 'rectangle'
 cask 'visual-studio-code'
+cask 'slack'
 
 #-------------------------------------------------------------------------------
 # Mac AppStore CommandLine Interface(mas-cli)

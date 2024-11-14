@@ -5,7 +5,8 @@
 #-------------------------------------------------------------------------------
 
 # Set temporary variable
-DOTFILES="$HOME/dotfiles"
+DOTFILES="${DOTFILES:-$HOME/dotfiles}"
+
 
 #-------------------------------------------------------------------------------
 # Zshrc
@@ -18,9 +19,9 @@ ln -nfs $DOTFILES/.zshrc $HOME/.zshrc
 # Homebrew
 #-------------------------------------------------------------------------------
 
-# Install if Homebrew is not exist
+# Install if Homebrew is not exist (for Silicon Mac)
 PATH="/opt/homebrew/bin:$PATH"
-if [ ! -f "$(which brew)" ]; then
+if [ ! -x "$(command -v brew)" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
@@ -31,7 +32,6 @@ brew update
 brew tap homebrew/bundle
 brew bundle --file=$DOTFILES/Brewfile # Install binary & applications
 brew cleanup
-brew untap homebrew/cask
 
 #-------------------------------------------------------------------------------
 # Git
@@ -46,10 +46,7 @@ ln -nfs $DOTFILES/.gitignore_global $HOME/.gitignore_global
 #-------------------------------------------------------------------------------
 
 # Create .vim directory
-mkdir ~/.vim
-mkdir ~/.vim/backup
-mkdir ~/.vim/swap
-mkdir ~/.vim/undo
+mkdir -p "$HOME/.vim/backup" "$HOME/.vim/swap" "$HOME/.vim/undo"
 
 # Install .vimrc
 ln -nfs $DOTFILES/.vimrc $HOME/.vimrc
@@ -59,11 +56,20 @@ ln -nfs $DOTFILES/.vimrc $HOME/.vimrc
 #-------------------------------------------------------------------------------
 
 # Create .nvm directory
-mkdir ~/.nvm
+mkdir -p ~/.nvm
+
+
+#-------------------------------------------------------------------------------
+# MacOS Preferences
+#-------------------------------------------------------------------------------
+
+# Enable backquote key usage when keyboard input is set to Korean
+mkdir -p ~/Library/KeyBindings
+cp $DOTFILES/KeyBindings/DefaultKeyBinding.dict ~/Library/KeyBindings/
 
 #-------------------------------------------------------------------------------
 # Install Apps from AppStore with mas-cli
 #-------------------------------------------------------------------------------
 
-mas install 937984704 # Amphetamine (5.1)
-mas install 497799835 # Xcode (12.2)
+mas install 937984704 # Amphetamine
+mas install 497799835 # Xcode

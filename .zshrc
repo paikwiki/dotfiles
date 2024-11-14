@@ -24,7 +24,7 @@ export CPPFLAGS="-I/opt/homebrew/opt/openssl@3.1/include"
 NEWLINE=$'\n'
 export PATH="$HOME/.git-radar:$PATH"
 export PROMPT="%F{33}🚌 %f%F{250}[%f%F{33}%~%f%F{250}]%f"
-export PROMPT="$PROMPT\$(/opt/homebrew/bin/githud zsh)${NEWLINE}%F{78}%n%f$ "
+export PROMPT="$PROMPT\$(git-radar --zsh --fetch)${NEWLINE}%F{78}%n%f$ "
 setopt PROMPT_SUBST
 
 # -----------------------------------------------
@@ -38,6 +38,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # -----------------------------------------------
 
 eval "$(pyenv init -)"
+source '/opt/homebrew/opt/autoenv/activate.sh'
 
 # -----------------------------------------------
 # Ruby
@@ -66,6 +67,13 @@ fi
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
     . "$HOME/google-cloud-sdk/completion.zsh.inc";
 fi
+
+# -----------------------------------------------
+# ETC
+# -----------------------------------------------
+
+# For vs code terminal
+bindkey -e
 
 # -----------------------------------------------
 # Aliases
