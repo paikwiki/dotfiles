@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Exit on error
-set -e
+# Exit on error, undefined variables, and pipe failures
+set -euo pipefail
 
 #-------------------------------------------------------------------------------
 # Dotfiles
@@ -46,10 +46,12 @@ ln -nfs $DOTFILES/.zshrc $HOME/.zshrc
 
 echo "🍺 Setting up Homebrew..."
 PATH="/opt/homebrew/bin:$PATH"
-if [ ! -f "$(command -v brew)" ]; then
+if ! command -v brew > /dev/null 2>&1; then
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  echo "Homebrew is already installed"
 fi
 
 # Update Homebrew recipes
@@ -104,6 +106,13 @@ eval "$(rbenv init -)"
 echo "📦 Setting up Node environment..."
 mkdir -p ~/.nvm
 
+# Source NVM if available
+if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  source "/opt/homebrew/opt/nvm/nvm.sh"
+  echo "NVM initialized successfully"
+fi
+
 #-------------------------------------------------------------------------------
 # Google Cloud SDK
 #-------------------------------------------------------------------------------
@@ -134,8 +143,17 @@ fi
 #-------------------------------------------------------------------------------
 
 echo "😎 Setting up Gitmoji..."
-# Install Gitmoji CLI globally
-npm install -g gitmoji-cli
+# Install Gitmoji CLI globally (requires Node.js/npm)
+if command -v npm > /dev/null 2>&1; then
+  if ! command -v gitmoji > /dev/null 2>&1; then
+    echo "Installing gitmoji-cli..."
+    npm install -g gitmoji-cli
+  else
+    echo "Gitmoji CLI is already installed"
+  fi
+else
+  echo "⚠️  npm not found, skipping gitmoji-cli installation"
+fi
 
 #-------------------------------------------------------------------------------
 # Brightness
