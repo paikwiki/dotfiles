@@ -90,14 +90,20 @@ ln -nfs $DOTFILES/.vimrc $HOME/.vimrc
 #-------------------------------------------------------------------------------
 
 echo "🐍 Setting up Python environment..."
-eval "$(pyenv init -)"
+if command -v pyenv > /dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  echo "Pyenv initialized successfully"
+fi
 
 #-------------------------------------------------------------------------------
 # Ruby - Rbenv
 #-------------------------------------------------------------------------------
 
 echo "💎 Setting up Ruby environment..."
-eval "$(rbenv init -)"
+if command -v rbenv > /dev/null 2>&1; then
+  eval "$(rbenv init -)"
+  echo "Rbenv initialized successfully"
+fi
 
 #-------------------------------------------------------------------------------
 # Node - NVM
@@ -120,9 +126,9 @@ fi
 echo "☁️ Setting up Google Cloud SDK..."
 if ! command -v gcloud > /dev/null 2>&1; then
   echo "Installing Google Cloud SDK..."
-  curl https://sdk.cloud.google.com > /tmp/install.sh
-  bash /tmp/install.sh --disable-prompts
-  rm /tmp/install.sh
+  curl -fsSL https://sdk.cloud.google.com > /tmp/install.sh
+  bash /tmp/install.sh --disable-prompts || echo "⚠️  Google Cloud SDK installation failed, continuing..."
+  rm -f /tmp/install.sh
 else
   echo "Google Cloud SDK is already installed"
 fi
@@ -135,7 +141,9 @@ echo "📜 Setting up Poetry..."
 # Install Poetry if not already installed
 if ! command -v poetry > /dev/null 2>&1; then
   echo "Installing Poetry..."
-  curl -sSL https://install.python-poetry.org | python3 -
+  curl -sSL https://install.python-poetry.org | python3 - || echo "⚠️  Poetry installation failed, continuing..."
+else
+  echo "Poetry is already installed"
 fi
 
 #-------------------------------------------------------------------------------
@@ -163,7 +171,9 @@ echo "💡 Setting up Brightness control..."
 # Install brightness tool from source if not already installed
 if ! command -v brightness > /dev/null 2>&1; then
   echo "Installing brightness..."
-  sh $DOTFILES/scripts/install_brightness.sh
+  sh $DOTFILES/scripts/install_brightness.sh || echo "⚠️  Brightness installation failed, continuing..."
+else
+  echo "Brightness is already installed"
 fi
 
 #-------------------------------------------------------------------------------
