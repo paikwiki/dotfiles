@@ -138,6 +138,15 @@ echo "⚠️  Brightness control tools need to be installed manually."
 echo "    Please visit brightness control app website and follow installation instructions."
 
 #-------------------------------------------------------------------------------
+# MacOS Preferences
+#-------------------------------------------------------------------------------
+
+echo "⌨️  Setting up macOS KeyBindings..."
+# Enable backquote key usage when keyboard input is set to Korean
+mkdir -p ~/Library/KeyBindings
+cp $DOTFILES/resources/DefaultkeyBinding.dict ~/Library/KeyBindings/
+
+#-------------------------------------------------------------------------------
 # Install Apps from AppStore with mas-cli
 #-------------------------------------------------------------------------------
 
