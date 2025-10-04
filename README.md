@@ -1,17 +1,55 @@
 # dotfiles by paikwiki
 
-## List of dotfile
+## Installation
 
-- .gitconfig
-- .gitignore_global
-- .vimrc
-- .zshrc
+```bash
+git clone https://github.com/paikwiki/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+./bootstrap.sh
+```
 
-## Manual installation
+## Dotfiles
 
-- [google-cloud-cli](https://cloud.google.com/sdk/docs/install?hl=ko)
-- [notion](https://www.notion.so/ko/desktop)
-- [browser-sync](https://browsersync.io/)(Node package)
+- `.gitconfig` - Git configuration
+- `.gitignore_global` - Global gitignore
+- `.vimrc` - Vim configuration
+- `.zshrc` - Zsh configuration
+- `Brewfile` - Homebrew packages and apps
+
+## Included Tools
+
+### Development Environment
+- Node.js (nvm)
+- Python (pyenv)
+- Ruby (rbenv)
+- Poetry
+
+### CLI Tools
+- k9s
+- git-radar
+- gitmoji
+- autoenv
+- trash
+- brightness
+
+### Applications
+- Docker
+- Google Chrome
+- iTerm2
+- Rectangle
+- Visual Studio Code
+- Slack
+- ChatGPT
+- Clipy
+
+### App Store Apps
+- Amphetamine
+- Xcode
+
+## Manual Installation
+
+- [Notion](https://www.notion.so/ko/desktop)
+- [Browser Sync](https://browsersync.io/) (Node package)
 
 ## Thanks to
 
