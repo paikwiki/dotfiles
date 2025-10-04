@@ -2,58 +2,63 @@
 # Taps
 #-------------------------------------------------------------------------------
 
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
-tap 'homebrew/services'
+tap 'homebrew/cask'        # Third-party macOS applications
+tap 'homebrew/cask-fonts'  # Fonts
+tap 'homebrew/services'    # Manage background services
 tap 'gbataille/homebrew-gba'
 
 #-------------------------------------------------------------------------------
-# Install Binaries
+# Core Utilities
 #-------------------------------------------------------------------------------
 
-brew 'git'
-brew 'openssl@3'
-brew 'wget'
+brew 'git'        # Version control system
+brew 'openssl@3'  # SSL/TLS cryptography library
+brew 'wget'       # Internet file retriever
 
 #-------------------------------------------------------------------------------
-# Node
+# Node.js Environment
 #-------------------------------------------------------------------------------
 
-brew 'node'
-brew 'nvm'
+brew 'node'  # JavaScript runtime
+brew 'nvm'   # Node Version Manager
 
 #-------------------------------------------------------------------------------
-# Virtual Environment
+# Language Version Managers
 #-------------------------------------------------------------------------------
 
-brew 'python'
-brew 'pyenv'
-brew 'rbenv'
+brew 'python'  # Python interpreter
+brew 'pyenv'   # Python version manager
+brew 'rbenv'   # Ruby version manager
 
 #-------------------------------------------------------------------------------
-# Apps
+# CLI Tools
 #-------------------------------------------------------------------------------
 
-brew 'k9s'
-brew 'git-radar'
-brew 'trash'
-cask 'clipy'
-cask 'docker'
-cask 'google-chrome'
-cask 'iterm2'
-cask 'rectangle'
-cask 'visual-studio-code'
-cask 'slack'
+brew 'k9s'        # Kubernetes CLI manager
+brew 'git-radar'  # Git repository status tool
+brew 'trash'      # Safe alternative to rm
 
 #-------------------------------------------------------------------------------
-# Mac AppStore CommandLine Interface(mas-cli)
+# GUI Applications
 #-------------------------------------------------------------------------------
 
-brew 'mas'
+cask 'clipy'               # Clipboard manager
+cask 'docker'              # Container platform
+cask 'google-chrome'       # Web browser
+cask 'iterm2'              # Terminal emulator
+cask 'rectangle'           # Window manager
+cask 'visual-studio-code'  # Code editor
+cask 'slack'               # Team communication
+
+#-------------------------------------------------------------------------------
+# Mac App Store CLI
+#-------------------------------------------------------------------------------
+
+brew 'mas'  # Mac App Store command-line interface
 
 #-------------------------------------------------------------------------------
 # Fonts
 #-------------------------------------------------------------------------------
 
-cask 'font-cascadia-code-pl'
-cask 'font-nanum-gothic-coding'
+cask 'font-cascadia-code-pl'      # Cascadia Code with Powerline
+cask 'font-nanum-gothic-coding'   # Korean coding font
