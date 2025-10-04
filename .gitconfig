@@ -1,6 +1,6 @@
 # This is Git's per-user configuration file.
 [core]
-	excludesFile = ~/.gitignore_global
+	excludesfile = /Users/paikwiki/.gitignore_global
 [user]
 	name = paikwiki
 	email = paikwiki@gmail.com
@@ -12,3 +12,7 @@
 	ui = true
 [pull]
 	rebase = false
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
