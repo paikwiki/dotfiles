@@ -28,6 +28,7 @@ brew 'nvm'  # Node Version Manager
 brew 'python'  # Python interpreter
 brew 'pyenv'   # Python version manager
 brew 'rbenv'   # Ruby version manager
+brew 'uv'      # Fast Python package installer
 
 #-------------------------------------------------------------------------------
 # CLI Tools

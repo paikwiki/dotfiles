@@ -23,6 +23,7 @@ cd ~/dotfiles
 - Python (pyenv)
 - Ruby (rbenv)
 - Poetry
+- uv
 
 ### CLI Tools
 - k9s
