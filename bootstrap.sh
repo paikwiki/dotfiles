@@ -4,6 +4,18 @@
 set -euo pipefail
 
 #-------------------------------------------------------------------------------
+# App Store Login Check
+#-------------------------------------------------------------------------------
+
+echo "🔐 Checking App Store login status..."
+if ! command -v mas > /dev/null 2>&1 || ! mas account > /dev/null 2>&1; then
+  echo "⚠️  Please sign in to the App Store first."
+  echo "   Open the App Store app and sign in, then run this script again."
+  exit 1
+fi
+echo "✓ App Store login confirmed"
+
+#-------------------------------------------------------------------------------
 # Dotfiles
 #-------------------------------------------------------------------------------
 
@@ -13,7 +25,7 @@ CURRENT_DATE=$(date '+%Y%m%d-%H%M%S')
 BACKUP_DIR="$HOME/dotfiles_backup_$CURRENT_DATE"
 
 echo "📦 Setting up dotfiles..."
-mkdir -p $BACKUP_DIR
+mkdir -p "$BACKUP_DIR"
 
 #-------------------------------------------------------------------------------
 # Backup existing files
@@ -38,7 +50,7 @@ fi
 #-------------------------------------------------------------------------------
 
 echo "🐚 Installing .zshrc..."
-ln -nfs $DOTFILES/.zshrc $HOME/.zshrc
+ln -nfs "$DOTFILES/.zshrc" "$HOME/.zshrc"
 
 #-------------------------------------------------------------------------------
 # Homebrew
@@ -60,8 +72,7 @@ brew update
 
 # Install all our dependencies with bundle (See Brewfile)
 echo "Installing Homebrew packages from Brewfile..."
-brew tap homebrew/bundle
-brew bundle --file=$DOTFILES/Brewfile # Install binary & applications
+brew bundle --file="$DOTFILES/Brewfile" # Install binary & applications
 brew cleanup
 
 #-------------------------------------------------------------------------------
@@ -70,8 +81,8 @@ brew cleanup
 
 echo "🌿 Setting up Git configuration..."
 # Install global Git configuration
-ln -nfs $DOTFILES/.gitconfig $HOME/.gitconfig
-ln -nfs $DOTFILES/.gitignore_global $HOME/.gitignore_global
+ln -nfs "$DOTFILES/.gitconfig" "$HOME/.gitconfig"
+ln -nfs "$DOTFILES/.gitignore_global" "$HOME/.gitignore_global"
 
 #-------------------------------------------------------------------------------
 # Vim
@@ -83,7 +94,7 @@ mkdir -p ~/.vim/swap
 mkdir -p ~/.vim/undo
 
 # Install .vimrc
-ln -nfs $DOTFILES/.vimrc $HOME/.vimrc
+ln -nfs "$DOTFILES/.vimrc" "$HOME/.vimrc"
 
 #-------------------------------------------------------------------------------
 # Python - Pyenv
@@ -171,7 +182,7 @@ echo "💡 Setting up Brightness control..."
 # Install brightness tool from source if not already installed
 if ! command -v brightness > /dev/null 2>&1; then
   echo "Installing brightness..."
-  sh $DOTFILES/scripts/install_brightness.sh || echo "⚠️  Brightness installation failed, continuing..."
+  sh "$DOTFILES/scripts/install_brightness.sh" || echo "⚠️  Brightness installation failed, continuing..."
 else
   echo "Brightness is already installed"
 fi
@@ -183,7 +194,7 @@ fi
 echo "⌨️  Setting up macOS KeyBindings..."
 # Enable backquote key usage when keyboard input is set to Korean
 mkdir -p ~/Library/KeyBindings
-cp $DOTFILES/resources/DefaultkeyBinding.dict ~/Library/KeyBindings/
+cp "$DOTFILES/resources/DefaultkeyBinding.dict" ~/Library/KeyBindings/
 
 #-------------------------------------------------------------------------------
 # Install Apps from AppStore with mas-cli
