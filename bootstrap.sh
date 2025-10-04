@@ -48,19 +48,29 @@ echo "🍺 Setting up Homebrew..."
 PATH="/opt/homebrew/bin:$PATH"
 if ! command -v brew > /dev/null 2>&1; then
   echo "Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  if /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    echo "✓ Homebrew installed successfully"
+  else
+    echo "❌ Failed to install Homebrew. Please check your internet connection and try again."
+    exit 1
+  fi
 else
-  echo "Homebrew is already installed"
+  echo "✓ Homebrew is already installed"
 fi
 
 # Update Homebrew recipes
 echo "Updating Homebrew recipes..."
-brew update
+if ! brew update; then
+  echo "⚠️  Failed to update Homebrew, but continuing with installation..."
+fi
 
 # Install all our dependencies with bundle (See Brewfile)
 echo "Installing Homebrew packages from Brewfile..."
-brew bundle --file="$DOTFILES/Brewfile" # Install binary & applications
+if ! brew bundle --file="$DOTFILES/Brewfile"; then
+  echo "❌ Failed to install some packages from Brewfile. Please check the errors above."
+  exit 1
+fi
 brew cleanup
 
 #-------------------------------------------------------------------------------
@@ -102,8 +112,13 @@ ln -nfs "$DOTFILES/.vimrc" "$HOME/.vimrc"
 
 echo "🐍 Setting up Python environment..."
 if command -v pyenv > /dev/null 2>&1; then
-  eval "$(pyenv init -)"
-  echo "Pyenv initialized successfully"
+  if eval "$(pyenv init -)"; then
+    echo "✓ Pyenv initialized successfully"
+  else
+    echo "⚠️  Pyenv initialization failed, but continuing..."
+  fi
+else
+  echo "⚠️  Pyenv not found. It should have been installed via Brewfile."
 fi
 
 #-------------------------------------------------------------------------------
@@ -112,8 +127,13 @@ fi
 
 echo "💎 Setting up Ruby environment..."
 if command -v rbenv > /dev/null 2>&1; then
-  eval "$(rbenv init -)"
-  echo "Rbenv initialized successfully"
+  if eval "$(rbenv init -)"; then
+    echo "✓ Rbenv initialized successfully"
+  else
+    echo "⚠️  Rbenv initialization failed, but continuing..."
+  fi
+else
+  echo "⚠️  Rbenv not found. It should have been installed via Brewfile."
 fi
 
 #-------------------------------------------------------------------------------
@@ -127,16 +147,19 @@ mkdir -p ~/.nvm
 if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
   export NVM_DIR="$HOME/.nvm"
   source "/opt/homebrew/opt/nvm/nvm.sh"
-  echo "NVM initialized successfully"
+  echo "✓ NVM initialized successfully"
 
   # Install Node LTS if not already installed
   if ! nvm ls --no-colors | grep -q "v[0-9]\+.*lts"; then
     echo "Installing Node.js LTS..."
-    nvm install --lts
-    nvm use --lts
-    nvm alias default 'lts/*'
+    if nvm install --lts && nvm use --lts && nvm alias default 'lts/*'; then
+      echo "✓ Node.js LTS installed successfully"
+    else
+      echo "❌ Failed to install Node.js LTS"
+      exit 1
+    fi
   else
-    echo "Node.js LTS is already installed"
+    echo "✓ Node.js LTS is already installed"
     nvm use --lts
   fi
 
@@ -144,10 +167,17 @@ if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
   echo "😎 Setting up Gitmoji..."
   if ! command -v gitmoji > /dev/null 2>&1; then
     echo "Installing gitmoji-cli..."
-    npm install -g gitmoji-cli
+    if npm install -g gitmoji-cli; then
+      echo "✓ Gitmoji CLI installed successfully"
+    else
+      echo "⚠️  Failed to install gitmoji-cli, but continuing..."
+    fi
   else
-    echo "Gitmoji CLI is already installed"
+    echo "✓ Gitmoji CLI is already installed"
   fi
+else
+  echo "⚠️  NVM not found at /opt/homebrew/opt/nvm/nvm.sh"
+  echo "   It should have been installed via Brewfile. Please check the installation."
 fi
 
 #-------------------------------------------------------------------------------
@@ -173,9 +203,13 @@ echo "📜 Setting up Poetry..."
 # Install Poetry if not already installed
 if ! command -v poetry > /dev/null 2>&1; then
   echo "Installing Poetry..."
-  curl -sSL https://install.python-poetry.org | python3 - || echo "⚠️  Poetry installation failed, continuing..."
+  if curl -sSL https://install.python-poetry.org | python3 -; then
+    echo "✓ Poetry installed successfully"
+  else
+    echo "⚠️  Poetry installation failed, but continuing..."
+  fi
 else
-  echo "Poetry is already installed"
+  echo "✓ Poetry is already installed"
 fi
 
 #-------------------------------------------------------------------------------
@@ -186,9 +220,13 @@ echo "💡 Setting up Brightness control..."
 # Install brightness tool from source if not already installed
 if ! command -v brightness > /dev/null 2>&1; then
   echo "Installing brightness..."
-  sh "$DOTFILES/scripts/install_brightness.sh" || echo "⚠️  Brightness installation failed, continuing..."
+  if sh "$DOTFILES/scripts/install_brightness.sh"; then
+    echo "✓ Brightness installed successfully"
+  else
+    echo "⚠️  Brightness installation failed, but continuing..."
+  fi
 else
-  echo "Brightness is already installed"
+  echo "✓ Brightness is already installed"
 fi
 
 #-------------------------------------------------------------------------------
@@ -205,7 +243,11 @@ cp "$DOTFILES/resources/DefaultkeyBinding.dict" ~/Library/KeyBindings/
 #-------------------------------------------------------------------------------
 
 echo "🛒 Installing applications from App Store..."
-mas install 937984704 # Amphetamine
+if mas install 937984704; then # Amphetamine
+  echo "✓ Amphetamine installed successfully"
+else
+  echo "⚠️  Failed to install Amphetamine, but continuing..."
+fi
 
 # Xcode installation (requires user confirmation due to large size)
 if ! mas list | grep -q "497799835"; then
@@ -215,12 +257,16 @@ if ! mas list | grep -q "497799835"; then
   read -r response
   if [[ "$response" =~ ^[Yy]$ ]]; then
     echo "Installing Xcode... This may take a while."
-    mas install 497799835
+    if mas install 497799835; then
+      echo "✓ Xcode installed successfully"
+    else
+      echo "❌ Failed to install Xcode. You can try again later with: mas install 497799835"
+    fi
   else
     echo "Skipping Xcode installation. You can install it later with: mas install 497799835"
   fi
 else
-  echo "Xcode is already installed"
+  echo "✓ Xcode is already installed"
 fi
 
 echo "✅ Dotfiles setup complete!"
