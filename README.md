@@ -28,7 +28,6 @@ cd ~/dotfiles
 - k9s
 - git-radar
 - gitmoji
-- autoenv
 - trash
 - brightness
 
@@ -50,6 +49,10 @@ cd ~/dotfiles
 
 - [Notion](https://www.notion.so/ko/desktop)
 - [Browser Sync](https://browsersync.io/) (Node package)
+
+## Third-party Licenses
+
+- [brightness](https://github.com/nriley/brightness) - BSD-2-Clause License
 
 ## Thanks to
 

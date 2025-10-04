@@ -35,7 +35,6 @@ brew 'rbenv'
 #-------------------------------------------------------------------------------
 
 brew 'k9s'
-brew 'autoenv'
 brew 'git-radar'
 brew 'gitmoji'
 brew 'brightness'

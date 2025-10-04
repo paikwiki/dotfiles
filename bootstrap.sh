@@ -134,8 +134,8 @@ npm install -g gitmoji-cli
 #-------------------------------------------------------------------------------
 
 echo "💡 Setting up Brightness control..."
-echo "⚠️  Brightness control tools need to be installed manually."
-echo "    Please visit brightness control app website and follow installation instructions."
+# Install brightness tool from source
+sh $DOTFILES/scripts/install_brightness.sh
 
 #-------------------------------------------------------------------------------
 # MacOS Preferences

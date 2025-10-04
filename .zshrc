@@ -112,7 +112,6 @@ setopt PROMPT_SUBST
 # -----------------------------------------------
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-source '/opt/homebrew/opt/autoenv/activate.sh'
 
 # -----------------------------------------------
 # Ruby (rbenv + Homebrew Ruby + GEM_HOME)
