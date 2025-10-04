@@ -38,7 +38,6 @@ cd ~/dotfiles
 - Rectangle
 - Visual Studio Code
 - Slack
-- ChatGPT
 - Clipy
 
 ### App Store Apps
