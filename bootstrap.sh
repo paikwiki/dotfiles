@@ -4,18 +4,6 @@
 set -euo pipefail
 
 #-------------------------------------------------------------------------------
-# App Store Login Check
-#-------------------------------------------------------------------------------
-
-echo "🔐 Checking App Store login status..."
-if ! command -v mas > /dev/null 2>&1 || ! mas account > /dev/null 2>&1; then
-  echo "⚠️  Please sign in to the App Store first."
-  echo "   Open the App Store app and sign in, then run this script again."
-  exit 1
-fi
-echo "✓ App Store login confirmed"
-
-#-------------------------------------------------------------------------------
 # Dotfiles
 #-------------------------------------------------------------------------------
 
@@ -74,6 +62,18 @@ brew update
 echo "Installing Homebrew packages from Brewfile..."
 brew bundle --file="$DOTFILES/Brewfile" # Install binary & applications
 brew cleanup
+
+#-------------------------------------------------------------------------------
+# App Store Login Check
+#-------------------------------------------------------------------------------
+
+echo "🔐 Checking App Store login status..."
+if ! mas account > /dev/null 2>&1; then
+  echo "⚠️  Please sign in to the App Store first."
+  echo "   Open the App Store app and sign in, then run this script again."
+  exit 1
+fi
+echo "✓ App Store login confirmed"
 
 #-------------------------------------------------------------------------------
 # Git
