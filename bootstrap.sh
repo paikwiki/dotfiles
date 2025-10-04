@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Exit on error
+set -e
+
 #-------------------------------------------------------------------------------
 # Dotfiles
 #-------------------------------------------------------------------------------
@@ -43,9 +46,9 @@ ln -nfs $DOTFILES/.zshrc $HOME/.zshrc
 
 echo "🍺 Setting up Homebrew..."
 PATH="/opt/homebrew/bin:$PATH"
-if [ ! -f "$(which brew)" ]; then
+if [ ! -f "$(command -v brew)" ]; then
   echo "Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -106,11 +109,13 @@ mkdir -p ~/.nvm
 #-------------------------------------------------------------------------------
 
 echo "☁️ Setting up Google Cloud SDK..."
-if ! [ -d "$HOME/google-cloud-sdk" ]; then
+if ! command -v gcloud > /dev/null 2>&1; then
   echo "Installing Google Cloud SDK..."
   curl https://sdk.cloud.google.com > /tmp/install.sh
   bash /tmp/install.sh --disable-prompts
   rm /tmp/install.sh
+else
+  echo "Google Cloud SDK is already installed"
 fi
 
 #-------------------------------------------------------------------------------
@@ -118,8 +123,11 @@ fi
 #-------------------------------------------------------------------------------
 
 echo "📜 Setting up Poetry..."
-# Install Poetry if not included in Brewfile
-curl -sSL https://install.python-poetry.org | python3 -
+# Install Poetry if not already installed
+if ! command -v poetry > /dev/null 2>&1; then
+  echo "Installing Poetry..."
+  curl -sSL https://install.python-poetry.org | python3 -
+fi
 
 #-------------------------------------------------------------------------------
 # Gitmoji
@@ -134,8 +142,11 @@ npm install -g gitmoji-cli
 #-------------------------------------------------------------------------------
 
 echo "💡 Setting up Brightness control..."
-# Install brightness tool from source
-sh $DOTFILES/scripts/install_brightness.sh
+# Install brightness tool from source if not already installed
+if ! command -v brightness > /dev/null 2>&1; then
+  echo "Installing brightness..."
+  sh $DOTFILES/scripts/install_brightness.sh
+fi
 
 #-------------------------------------------------------------------------------
 # MacOS Preferences
