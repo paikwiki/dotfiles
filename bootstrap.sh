@@ -206,6 +206,21 @@ cp "$DOTFILES/resources/DefaultkeyBinding.dict" ~/Library/KeyBindings/
 
 echo "🛒 Installing applications from App Store..."
 mas install 937984704 # Amphetamine
-mas install 497799835 # Xcode
+
+# Xcode installation (requires user confirmation due to large size)
+if ! mas list | grep -q "497799835"; then
+  echo ""
+  echo "⚠️  Xcode is a large application (12+ GB) and takes a long time to install."
+  echo "   Do you want to install Xcode now? (y/N)"
+  read -r response
+  if [[ "$response" =~ ^[Yy]$ ]]; then
+    echo "Installing Xcode... This may take a while."
+    mas install 497799835
+  else
+    echo "Skipping Xcode installation. You can install it later with: mas install 497799835"
+  fi
+else
+  echo "Xcode is already installed"
+fi
 
 echo "✅ Dotfiles setup complete!"
