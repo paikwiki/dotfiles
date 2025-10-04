@@ -19,8 +19,7 @@ brew 'wget'       # Internet file retriever
 # Node.js Environment
 #-------------------------------------------------------------------------------
 
-brew 'node'  # JavaScript runtime
-brew 'nvm'   # Node Version Manager
+brew 'nvm'  # Node Version Manager
 
 #-------------------------------------------------------------------------------
 # Language Version Managers

@@ -128,6 +128,26 @@ if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
   export NVM_DIR="$HOME/.nvm"
   source "/opt/homebrew/opt/nvm/nvm.sh"
   echo "NVM initialized successfully"
+
+  # Install Node LTS if not already installed
+  if ! nvm ls --no-colors | grep -q "lts"; then
+    echo "Installing Node.js LTS..."
+    nvm install --lts
+    nvm use --lts
+    nvm alias default 'lts/*'
+  else
+    echo "Node.js LTS is already installed"
+    nvm use --lts
+  fi
+
+  # Install Gitmoji CLI globally (requires Node.js/npm)
+  echo "😎 Setting up Gitmoji..."
+  if ! command -v gitmoji > /dev/null 2>&1; then
+    echo "Installing gitmoji-cli..."
+    npm install -g gitmoji-cli
+  else
+    echo "Gitmoji CLI is already installed"
+  fi
 fi
 
 #-------------------------------------------------------------------------------
@@ -155,23 +175,6 @@ if ! command -v poetry > /dev/null 2>&1; then
   curl -sSL https://install.python-poetry.org | python3 - || echo "⚠️  Poetry installation failed, continuing..."
 else
   echo "Poetry is already installed"
-fi
-
-#-------------------------------------------------------------------------------
-# Gitmoji
-#-------------------------------------------------------------------------------
-
-echo "😎 Setting up Gitmoji..."
-# Install Gitmoji CLI globally (requires Node.js/npm)
-if command -v npm > /dev/null 2>&1; then
-  if ! command -v gitmoji > /dev/null 2>&1; then
-    echo "Installing gitmoji-cli..."
-    npm install -g gitmoji-cli
-  else
-    echo "Gitmoji CLI is already installed"
-  fi
-else
-  echo "⚠️  npm not found, skipping gitmoji-cli installation"
 fi
 
 #-------------------------------------------------------------------------------
