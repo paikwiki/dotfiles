@@ -156,10 +156,11 @@ fi
 
 echo "☁️ Setting up Google Cloud SDK..."
 if ! command -v gcloud > /dev/null 2>&1; then
-  echo "Installing Google Cloud SDK..."
+  echo "Installing Google Cloud SDK to ~/google-cloud-sdk..."
   curl -fsSL https://sdk.cloud.google.com > /tmp/install.sh
-  bash /tmp/install.sh --disable-prompts || echo "⚠️  Google Cloud SDK installation failed, continuing..."
+  bash /tmp/install.sh --disable-prompts --install-dir="$HOME" || echo "⚠️  Google Cloud SDK installation failed, continuing..."
   rm -f /tmp/install.sh
+  echo "ℹ️  Google Cloud SDK has been installed. Restart your terminal or source ~/.zshrc to use it."
 else
   echo "Google Cloud SDK is already installed"
 fi
