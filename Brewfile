@@ -5,7 +5,7 @@
 tap 'homebrew/cask'        # Third-party macOS applications
 tap 'homebrew/cask-fonts'  # Fonts
 tap 'homebrew/services'    # Manage background services
-tap 'gbataille/homebrew-gba'
+tap 'michaeldfallen/formula'  # For git-radar
 
 #-------------------------------------------------------------------------------
 # Core Utilities
