@@ -36,8 +36,6 @@ brew 'rbenv'
 
 brew 'k9s'
 brew 'git-radar'
-brew 'gitmoji'
-brew 'brightness'
 brew 'trash'
 cask 'clipy'
 cask 'docker'
