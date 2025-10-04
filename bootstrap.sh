@@ -130,7 +130,7 @@ if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
   echo "NVM initialized successfully"
 
   # Install Node LTS if not already installed
-  if ! nvm ls --no-colors | grep -q "lts"; then
+  if ! nvm ls --no-colors | grep -q "v[0-9]\+.*lts"; then
     echo "Installing Node.js LTS..."
     nvm install --lts
     nvm use --lts
