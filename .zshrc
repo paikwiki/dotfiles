@@ -30,9 +30,6 @@ fi
 if ! check_command git; then
   missing_apps+=("Git")
 fi
-if ! [ -f "/opt/homebrew/bin/githud" ]; then # TODO: GitHud 설치하는 스크립트 생성(+Brightness)
-  missing_apps+=("Githud")
-fi
 if ! check_command pyenv; then
   missing_apps+=("Pyenv")
 fi
@@ -102,7 +99,6 @@ bindkey -e
 # Prompt
 # -----------------------------------------------
 NEWLINE=$'\n'
-export PATH="$HOME/.git-radar:$PATH"
 export PROMPT="%F{33}🚌 %f%F{250}[%f%F{33}%~%f%F{250}]%f"
 export PROMPT="$PROMPT\$(git-radar --zsh --fetch)${NEWLINE}%F{78}%n%f$ "
 setopt PROMPT_SUBST

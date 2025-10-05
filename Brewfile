@@ -2,9 +2,6 @@
 # Taps
 #-------------------------------------------------------------------------------
 
-tap 'homebrew/cask'        # Third-party macOS applications
-tap 'homebrew/cask-fonts'  # Fonts
-tap 'homebrew/services'    # Manage background services
 tap 'michaeldfallen/formula'  # For git-radar
 
 #-------------------------------------------------------------------------------
@@ -43,7 +40,7 @@ brew 'trash'      # Safe alternative to rm
 #-------------------------------------------------------------------------------
 
 cask 'clipy'               # Clipboard manager
-cask 'docker'              # Container platform
+cask 'docker-desktop'      # Container platform
 cask 'google-chrome'       # Web browser
 cask 'iterm2'              # Terminal emulator
 cask 'rectangle'           # Window manager
