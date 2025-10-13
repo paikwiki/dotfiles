@@ -26,6 +26,7 @@ brew 'uv'      # Fast Python package installer
 #-------------------------------------------------------------------------------
 
 brew 'k9s'        # Kubernetes CLI manager
+brew 'gitmoji'    # Emoji guide for commit messages
 brew 'trash'      # Safe alternative to rm
 
 #-------------------------------------------------------------------------------

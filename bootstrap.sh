@@ -180,19 +180,6 @@ if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
     echo "✓ Node.js LTS is already installed"
     nvm use --lts
   fi
-
-  # Install Gitmoji CLI globally (requires Node.js/npm)
-  echo "😎 Setting up Gitmoji..."
-  if ! command -v gitmoji > /dev/null 2>&1; then
-    echo "Installing gitmoji-cli..."
-    if npm install -g gitmoji-cli; then
-      echo "✓ Gitmoji CLI installed successfully"
-    else
-      echo "⚠️  Failed to install gitmoji-cli, but continuing..."
-    fi
-  else
-    echo "✓ Gitmoji CLI is already installed"
-  fi
 else
   echo "⚠️  NVM not found at /opt/homebrew/opt/nvm/nvm.sh"
   echo "   It should have been installed via Brewfile. Please check the installation."
