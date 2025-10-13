@@ -96,9 +96,12 @@ fi
 #-------------------------------------------------------------------------------
 
 echo "🔐 Checking App Store login status..."
-if ! mas account > /dev/null 2>&1; then
-  echo "⚠️  Please sign in to the App Store first."
-  echo "   Open the App Store app and sign in, then run this script again."
+echo "⚠️  Please confirm you are signed in to the App Store."
+echo "   This is required to install apps from the App Store."
+echo "   Have you signed in to the App Store? (Y/n)"
+read -r response
+if [[ ! "$response" =~ ^[Yy]?$ ]]; then
+  echo "Please sign in to the App Store first, then run this script again."
   exit 1
 fi
 echo "✓ App Store login confirmed"
