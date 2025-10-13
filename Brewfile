@@ -40,7 +40,6 @@ brew 'trash'      # Safe alternative to rm
 #-------------------------------------------------------------------------------
 
 cask 'clipy'               # Clipboard manager
-cask 'docker-desktop'      # Container platform
 cask 'google-chrome'       # Web browser
 cask 'iterm2'              # Terminal emulator
 cask 'rectangle'           # Window manager
