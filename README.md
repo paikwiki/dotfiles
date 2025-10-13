@@ -33,7 +33,6 @@ cd ~/dotfiles
 - brightness
 
 ### Applications
-- Docker
 - Google Chrome
 - iTerm2
 - Rectangle
