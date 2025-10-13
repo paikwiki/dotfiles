@@ -74,6 +74,24 @@ fi
 brew cleanup
 
 #-------------------------------------------------------------------------------
+# Git Radar
+#-------------------------------------------------------------------------------
+
+echo "📡 Setting up git-radar..."
+if ! command -v git-radar > /dev/null 2>&1; then
+  echo "Installing git-radar..."
+  # Install with tap (may show warnings but usually succeeds)
+  if brew tap michaeldfallen/formula 2>&1 | grep -v "Warning" && \
+     brew install git-radar 2>&1 | grep -v "Warning"; then
+    echo "✓ git-radar installed successfully"
+  else
+    echo "⚠️  git-radar installation may have warnings, but continuing..."
+  fi
+else
+  echo "✓ git-radar is already installed"
+fi
+
+#-------------------------------------------------------------------------------
 # App Store Login Check
 #-------------------------------------------------------------------------------
 
